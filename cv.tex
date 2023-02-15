@@ -15,12 +15,14 @@
 \frenchspacing
 
 % Fonts
-\usepackage[largesmallcaps,oldstylenums]{kpfonts}
-\linespread{1.06}
+\usepackage[largesmallcaps]{kpfonts}
+\usepackage{biolinum}
+% \linespread{1.06}
 
 % Hyperlinks
 \usepackage{hyperref}
-\colorlet{linkcolor}{red!50!black}
+% \colorlet{linkcolor}{red!50!black}
+\definecolor{linkcolor}{HTML}{3c78d8}
 \hypersetup{%
 	pdftitle=\doctitle,
 	pdfauthor=\docauthor,
@@ -49,11 +51,11 @@
 
 % Section headers
 \setsecnumdepth{chapter}
-\setsecheadstyle{\Large\color{red!50!black}}
+\setsecheadstyle{\Large\bfseries\sffamily}
 
 % Layout
-\setlrmarginsandblock{34.8mm}{*}{1}
-\checkandfixthelayout
+% \setlrmarginsandblock{34.8mm}{*}{1}
+% \checkandfixthelayout
 
 % Title
 \title{\doctitle}
@@ -69,127 +71,227 @@
 }
 \makeatother
 
+\usepackage{tabularx}
+\usepackage{ragged2e}
+\usepackage{fontawesome}
+
 \begin{document}
 
-\maketitle
+% \maketitle
 
-\section{Contact information}
+\newcolumntype{L}{>{\RaggedRight\arraybackslash}X}
+\newcolumntype{R}{>{\small\RaggedLeft\arraybackslash}p{5cm}}
 
-\begin{description}[itemsep=0pt]
-    % \item[Birthday] 3rd October 1995
-    % \item[Address] Tordenskjoldsgade 64 st. tv., 8200 Aarhus N, Denmark
-    % \item[Phone] +45 30 70 44 20
-    \item[Email] \href{mailto:dannynhansen@gmail.com}{dannynhansen@gmail.com}
-    \item[Web] \href{https://dnhansen.github.io/}{dnhansen.github.io}
-\end{description}
+\newcommand{\boxsize}{0.5cm}
+\colorlet{graycolor}{white!40!black}
 
-
-\section{Work experience}
-\begin{description}
-    \myitem{2018--2021}
-        {Teaching Assistant, \textbf{Aarhus University}}
-        %
-        {TA for undergraduate courses in the Departments of Mathematics and Computer Science at Aarhus University. The responsibilities of the TA include supervising weekly exercise sessions, correcting assignments and course projects, and helping students through internet forums and study cafés.}
-    
-    \myitem{2020--2021}
-        {Student Counsellor, \textbf{Aarhus University}}
-        %
-        {Student counsellor for mathematics, statistics and science studies. As student counsellor my job has been to help current students at Aarhus University, as well as incoming students and alumni, with everything from administrative issues to student welfare. As student counsellor I have also completed the internal counselling course at Aarhus University.}
-    
-    \myitem{2014--2016}
-        {Pianist, \textbf{Happy Voices Gospel Choir}, Viborg}
-        %
-        {Pianist for amateur choir with around 50 members. I had the main responsibility for the accompaniment section and took part in arranging and planning our repertoire.}
-    
-    \myitem{2014--2016}
-        {Freelance musician and music educator}
-        %
-        {I have performed at church services, receptions, birthdays and other occasions. I have also given piano lessons, both privately and at workshops.}
-\end{description}
-
-\newpage
-\section{Education}
-\begin{description}
-    \myitem{2021--now}
-        {BSc in Computer Science, \textbf{Aarhus University}\hfill Prelim. {\scshape gpa}: 12/12}
-        %
-        {Electives in mathematics and statistics.}
-    
-    \myitem{2018--2021}
-        {BSc in Mathematics, \textbf{Aarhus University} \hfill {\scshape gpa}: 11.8/12}
-        %
-        {Undergraduate thesis: \textquote{Unbounded Operators on Hilbert Space with Applications in Quantum Mechanics}. \\
-        Electives in computer science and statistics. Participated in and completed the Mathematics Talent Track (30~ECTS extracurriculars).}
-    
-    \myitem{2016--2018}
-        {Undergraduate studies in physics, \textbf{Aarhus University}  \hfill {\scshape gpa}: 12/12}
-        %
-        {Completed the first two years of a BSc programme in physics. Participated in the Physics Talent Track (completed 12 ECTS extracurriculars).}
-    
-    \myitem{2014--2016}
-        {\textquote{Musikalsk Grundkursus} (MGK), \textbf{Kulturskolen Viborg}}
-        %
-        {MGK is a three-year advanced music course whose purpose is partly to educate musicians and music creators, and partly to prepare students for application music conservatories. I completed the course in two years receiving the top grade, and received an offer of admission from the Royal Academy of Music in Aarhus.}
-    
-    \myitem{2011--2014}
-        {\textquote{Studentereksamen}, \textbf{Viborg Katedralskole} \hfill {\scshape gpa}: 12.1/12}
-        %
-        {The Higher General Examination Programme, the Danish general upper secondary education programme. Completed the specialised study programme in music and English with electives in physics and astronomy. Self-studied upper-level mathematics. Received Knud Valdemar Iversen and wife Ellen Iversen's grant for general proficiency.}
-\end{description}
+\makeatletter
+\noindent\begin{tabularx}{\textwidth}{@{}LR@{}}
+    {\sffamily\bfseries\huge\@author} \par \vspace{0.2cm}{\color{linkcolor}\sffamily\bfseries\LARGE\@title} & \sffamily \textcolor{graycolor}{Aarhus, Denmark \makebox[\boxsize]{\faMapMarker} \newline \href{https://dnhansen.github.io/}{\color{graycolor}dnhansen.github.io} \makebox[\boxsize]{\faHome} \newline \href{https://github.com/dnhansen}{\color{graycolor}dnhansen} \makebox[\boxsize]{\faGithub} \newline \href{https://www.linkedin.com/in/dnhansen/}{\color{graycolor}dnhansen} \makebox[\boxsize]{\faLinkedinSquare} \newline \href{mailto:dannynhansen@gmail.com}{\color{graycolor}dannynhansen@gmail.com} \makebox[\boxsize]{\faEnvelope}}
+\end{tabularx}
+\makeatother
 
 
-\section{Teaching experience}
+\section[Work experience]{\faBriefcase~~Work experience}
+
+\newcommand{\entry}[6][]{%
+    \noindent {\sffamily\bfseries {\color{linkcolor} #2}~~\faAngleDoubleRight~~#3} \par%
+    \noindent {\sffamily\small\color{graycolor} #4~~$\diamond$~~#5\ifstrempty{#1}{}{~~$\diamond$~~{GPA}: #1/12}} \par%
+    \noindent {#6}%
+    \vspace{\baselineskip}%
+}
+
+\entry{Aarhus University}{Teaching Assistant}{2018--}{Aarhus, Denmark}{%
+    TA for undergraduate courses in the Departments of Mathematics and Computer Science at Aarhus University.
+}
+
+\entry{Aarhus University}{Student Counsellor}{2020--2021}{Aarhus, Denmark}{%
+    Student counsellor for mathematics, statistics and science studies. Completed the internal counselling course at Aarhus University.
+}
+
+\entry{Happy Voices Gospel Choir}{Pianist}{2014--2016}{Viborg, Denmark}{%
+    Pianist for amateur choir with around 50 members. Main responsibility for the accompaniment section and took part in arranging and planning our repertoire.
+}
+
+\entry{Freelance}{Musician and music educator}{2014--2016}{Viborg, Denmark}{%
+    Performed at church services, receptions, birthdays and other occasions. Also given piano lessons, both privately and at workshops.
+}
+\vspace{-\baselineskip}
+
+
+
+% \begin{description}
+%     \myitem{2018--2021}
+%         {Teaching Assistant, \textbf{Aarhus University}}
+%         %
+%         {TA for undergraduate courses in the Departments of Mathematics and Computer Science at Aarhus University. The responsibilities of the TA include supervising weekly exercise sessions, correcting assignments and course projects, and helping students through internet forums and study cafés.}
+    
+%     \myitem{2020--2021}
+%         {Student Counsellor, \textbf{Aarhus University}}
+%         %
+%         {Student counsellor for mathematics, statistics and science studies. As student counsellor my job has been to help current students at Aarhus University, as well as incoming students and alumni, with everything from administrative issues to student welfare. As student counsellor I have also completed the internal counselling course at Aarhus University.}
+    
+%     \myitem{2014--2016}
+%         {Pianist, \textbf{Happy Voices Gospel Choir}, Viborg}
+%         %
+%         {Pianist for amateur choir with around 50 members. I had the main responsibility for the accompaniment section and took part in arranging and planning our repertoire.}
+    
+%     \myitem{2014--2016}
+%         {Freelance musician and music educator}
+%         %
+%         {I have performed at church services, receptions, birthdays and other occasions. I have also given piano lessons, both privately and at workshops.}
+% \end{description}
+
+% \newpage
+
+
+
+
+\section[Education]{\faUniversity~~Education}
+
+\newcommand{\ECTS}{\textsc{ects}}
+
+\entry[11.9]{Aarhus University}{BSc in Computer Science}{2021--}{Aarhus, Denmark}{%
+    Specialisation in theoretical computer science.
+}
+
+\entry[11.8]{Aarhus University}{BSc in Mathematics}{2018--2021}{Aarhus, Denmark}{%
+    Specialisation in mathematical physics and theoretical computer science. Completed the Mathematics Talent Track (30~\ECTS).
+}
+
+\pagebreak
+
+\entry[12]{Aarhus University}{Undergraduate studies in physics}{2016--2018}{Aarhus, Denmark}{%
+    Completed the first two years of a BSc programme in physics. Participated in the Physics Talent Track (completed 12~\ECTS).
+}
+
+\entry{Kulturskolen Viborg}{\textquote{Musikalsk Grundkursus} (MGK)}{2014--2016}{Viborg, Denmark}{%
+    Three-year advanced music course with specialisation in jazz and classical piano. Completed the course in two years receiving the top grade, and received an offer of admission from the Royal Academy of Music in Aarhus.
+}
+
+\entry[12.1]{Viborg Katedralskole}{Higher General Examination Programme (STX)}{2011--2014}{Viborg, Denmark}{%
+    Danish general upper secondary education programme. Specialised study programme in music and English with electives in physics and astronomy. Self-studied upper-level mathematics. Received Knud Valdemar Iversen and wife Ellen Iversen's grant for general proficiency.
+}
+\vspace{-\baselineskip}
+
+% \begin{description}
+%     \myitem{2021--now}
+%         {BSc in Computer Science, \textbf{Aarhus University}\hfill Prelim. {\scshape gpa}: 12/12}
+%         %
+%         {Electives in mathematics and statistics.}
+    
+%     \myitem{2018--2021}
+%         {BSc in Mathematics, \textbf{Aarhus University} \hfill {\scshape gpa}: 11.8/12}
+%         %
+%         {Undergraduate thesis: \textquote{Unbounded Operators on Hilbert Space with Applications in Quantum Mechanics}. \\
+%         Electives in computer science and statistics. Participated in and completed the Mathematics Talent Track (30~\ECTS{} extracurriculars).}
+    
+%     \myitem{2016--2018}
+%         {Undergraduate studies in physics, \textbf{Aarhus University}  \hfill {\scshape gpa}: 12/12}
+%         %
+%         {Completed the first two years of a BSc programme in physics. Participated in the Physics Talent Track (completed 12 \ECTS{} extracurriculars).}
+    
+%     \myitem{2014--2016}
+%         {\textquote{Musikalsk Grundkursus} (MGK), \textbf{Kulturskolen Viborg}}
+%         %
+%         {MGK is a three-year advanced music course whose purpose is partly to educate musicians and music creators, and partly to prepare students for application music conservatories. I completed the course in two years receiving the top grade, and received an offer of admission from the Royal Academy of Music in Aarhus.}
+    
+%     \myitem{2011--2014}
+%         {\textquote{Studentereksamen}, \textbf{Viborg Katedralskole} \hfill {\scshape gpa}: 12.1/12}
+%         %
+%         {The Higher General Examination Programme, the Danish general upper secondary education programme. Completed the specialised study programme in music and English with electives in physics and astronomy. Self-studied upper-level mathematics. Received Knud Valdemar Iversen and wife Ellen Iversen's grant for general proficiency.}
+% \end{description}
+
+
+\section[Teaching experience]{\faGraduationCap~~Teaching experience}
 
 \newcommand{\course}{\emph}
 
-I have been a teaching assistant (instruktor) for the following courses at Aarhus University:
+Teaching assistant (\textquote{instruktor}) for the following courses:
 
-\begin{description}[itemsep=0em]
-    \myitem{Spring 21}{\course{Introduction to Programming with Scientific Applications}. Department of Computer Science.}{}
-    
-    \myitem{Spring 20}{\course{Mathematical Analysis 2}. Department of Mathematics.}{}
-    
-    \myitem{Autumn 19}{\course{Mathematical Analysis 1}. Department of Mathematics.}{}
-    
-    \myitem{Autumn 18}{\course{Calculus Beta}. Department of Mathematics.}{}
-\end{description}
+% \vspace{\baselineskip}
+
+% \renewcommand{\arraystretch}{1.5}
+% \noindent \begin{tabularx}{\textwidth}{@{}>{\bfseries\sffamily\color{linkcolor}}l@{~~\faAngleDoubleRight~~}X@{}}
+%     Spring 2023 & \course{Computer Architecture, Networks, and Operating Systems}. Department of Computer Science. \\
+%     Spring 2021 & \course{Introduction to Programming with Scientific Applications}. Department of Computer Science. \\
+%     Spring 2020 & \course{Mathematical Analysis 2}. Department of Mathematics. \\
+%     Autumn 2019 & \course{Mathematical Analysis 1}. Department of Mathematics. \\
+%     Autumn 2018 & \course{Calculus Beta}. Department of Mathematics.
+% \end{tabularx}
+
+\begin{itemize}[label={\faAngleDoubleRight}]
+    \item \course{Computer Architecture, Networks, and Operating Systems} \\
+    %
+    {\sffamily\small\color{graycolor}Spring 2023~~$\diamond$~~Department of Computer Science, Aarhus University}
+
+    \item \course{Introduction to Programming with Scientific Applications} \\
+    %
+    {\sffamily\small\color{graycolor}Spring 2021~~$\diamond$~~Department of Computer Science, Aarhus University}
+
+    \item \course{Mathematical Analysis 2} \\
+    %
+    {\sffamily\small\color{graycolor}Spring 2020~~$\diamond$~~Department of Mathematics, Aarhus University}
+
+    \item \course{Mathematical Analysis 1} \\
+    %
+    {\sffamily\small\color{graycolor}Autumn 2019~~$\diamond$~~Department of Mathematics, Aarhus University}
+
+    \item \course{Calculus Beta} \\
+    %
+    {\sffamily\small\color{graycolor}Autumn 2020~~$\diamond$~~Department of Mathematics, Aarhus University}
+\end{itemize}
 
 
-\section{Technical and computer skills}
+% \begin{description}[itemsep=0em]
+%     \myitem{Spring 23}{\course{Computer Architecture, Networks, and Operating Systems}. Department of Computer Science.}{}
+    
+%     \myitem{Spring 21}{\course{Introduction to Programming with Scientific Applications}. Department of Computer Science.}{}
+    
+%     \myitem{Spring 20}{\course{Mathematical Analysis 2}. Department of Mathematics.}{}
+    
+%     \myitem{Autumn 19}{\course{Mathematical Analysis 1}. Department of Mathematics.}{}
+    
+%     \myitem{Autumn 18}{\course{Calculus Beta}. Department of Mathematics.}{}
+% \end{description}
 
-\begin{itemize}[itemsep=0em]
-    \item Software development in Java. Test-driven development, compositional design, and design patterns.
-    
-    \item Computer architecture. Programming in C and x86 assembly. Basic knowledge of operating systems, in particular Unix.
-    
-    \item Concurrent and distributed (network) programming in C, Java and Go.
 
-    \item Scientific and statistical programming in Python and R.
+\section[Technical and computer skills]{\faCode~~Technical and computer skills}
+
+\newcommand{\lan}[1]{\textsf{\textbf{\textcolor{linkcolor}{#1}}}}
+
+\begin{itemize}[itemsep=0em,label={\faAngleDoubleRight}]
+    \item Software development in \lan{Java}. Test-driven development, compositional design, and design patterns.
     
-    \item Functional programming in Haskell, Scala and Lisp (Scheme/Racket).
+    \item Computer architecture. Programming in \lan{C} and \lan{x86 assembly}. Basic knowledge of operating systems, in particular \lan{Unix}.
+    
+    \item Concurrent and distributed (network) programming in \lan{C}, \lan{Java} and \lan{Go}.
+
+    \item Scientific and statistical programming in \lan{Python} and \lan{R}.
+    
+    \item Functional programming in \lan{Haskell}, \lan{Scala}, \lan{F\#} and \lan{Racket}.
     
     \item Theoretical computer science: Algorithms and data structures, programming language theory, computability and logic.
     
-    \item Experience with database systems and data modelling, in particular relational databases and SQL, concurrency control and recovery. Basic knowledge of data mining.
+    \item Experience with database systems and data modelling, in particular relational databases and \lan{SQL}, concurrency control and recovery. Basic knowledge of data mining.
 \end{itemize}
 %
 For more details see my \href{https://github.com/dnhansen/}{GitHub page} and a \href{https://dnhansen.github.io/coursework}{complete list of university coursework}.
 
 
-\section{Language skills}
+\section[Language skills]{\faBook~~Language skills}
 
 \begin{description}[itemsep=0pt]
     \item[Danish] Native proficiency
     \item[English] Full professional proficiency
     \item[German] Limited working proficiency
-    \item[Korean] I am studying diligently!
 \end{description}
 
 
-\section{Hobbies and interests}
+\section[Hobbies and interests]{\faMusic~~Hobbies and interests}
 
 Outside of mathematics and computer science, music is my favourite pastime. I play the piano and guitar, and I sing in the Musicology Students' Choir at Aarhus University where I also volunteer as treasurer.
 
-I also enjoy going for a walk in the forest or reading a good book (I'm currently reading Robertson Davies' \emph{Fifth Business}).
+I also enjoy going for a run in the forest or reading a good book (I'm currently reading Robertson Davies' \emph{Fifth Business}).
 
 \end{document}
